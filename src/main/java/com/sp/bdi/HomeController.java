@@ -42,9 +42,16 @@ public class HomeController {
 		strList.add("test3");
 		strList.add("test4");
 		strList.add("test5");
-		model.addAttribute("strList", strList);
+		model.addAttribute("strList", strList); // key-value
 		
 		return "home";
 	}
 	
+	@RequestMapping(value = "/test") // GET, POST 상관없이 이 글자만 맞으면 다 탐
+	public String test(Model m) {
+		// WEB-INF/views/test/test.jsp
+		// 누군가 new를 해준다!
+		System.out.println(m); // {}
+		return "test/test";
+	}
 }
