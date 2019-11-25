@@ -1,4 +1,4 @@
-package com.sp.bdi.test;
+package com.sp.bdi.test.test1;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
