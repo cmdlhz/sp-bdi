@@ -3,14 +3,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="car" class="com.sp.bdi.test.test2.Car">
+	<!-- 1) generate memory -->
+	<!-- 이게 new Car() 인것 -->
+	<bean id="car1" class="com.sp.bdi.test.test2.Car"> <!-- myBatis도 이렇게 동작 -->
 		<!-- 생성할 때 주입 : 생성자 주입 -->
 		<constructor-arg value="Sonata"></constructor-arg>
 	</bean>
+	
+	<!-- 2) setter setup -->
 	<bean id="carMaker" class="com.sp.bdi.test.test2.CarMaker">
 		<constructor-arg value="Ford"></constructor-arg>
+		<!-- 앞이 "set" // "setCar"를 찾아주는 것 -->
 		<property name="car">
-			<ref bean="car" /> <!-- 위의 car를 가리킴 -->
+			<ref bean="car1" /> <!-- 위의 car를 가리킴 -->
 		</property>
 	</bean>
 </beans>
