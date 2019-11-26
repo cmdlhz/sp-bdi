@@ -19,5 +19,11 @@
 	    <li>${value}</li>
 	</c:forEach>
 </ul>
+<br><br>
+page : ${pageScope.userList}<br>
+req : ${requestScope.userList}<br> <!-- 여기만 나옴 -->
+session : ${sessionScope.userList}<br>
+app : ${applicationScope.userList}<br>
+
 </body>
 </html>

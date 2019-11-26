@@ -13,7 +13,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<Map<String, String>> selectUserList() {
 		List<Map<String, String>> userList = new ArrayList<Map<String, String>>();
-		for(int i=1; i<=5; i++) {
+		for(int i=1; i<=3; i++) {
 			Map<String, String> user = new HashMap<String, String>();
 			user.put("name", "name : " + i);
 			user.put("age", "age : " + i);
