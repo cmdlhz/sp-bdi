@@ -11,8 +11,10 @@ public class Execute {
 		
 		CarMaker cm = (CarMaker)ac.getBean("carMaker");
 		System.out.println(cm); // CarMaker [carMakerName=Ford, car=null]
-		
+		Car car = cm.makeCar();
 //		cm.setCar(c);
-		System.out.println(cm.makeCar()); // Car(carName=Sonata, price=null)
+		System.out.println(car); // Car(carName=Sonata, price=null)
+		Car car2 = (Car)ac.getBean("car1");
+		System.out.println(car == car2); // true(scope="prototype" 이라고 하지 않으면 매번 같은 메모리 생성) vs false(scope="prototype" 이라고 하면)
 	}
 }

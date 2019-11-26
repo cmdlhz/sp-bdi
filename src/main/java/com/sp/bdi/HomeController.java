@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Handles requests for the application home page.
  */
-@Controller
+@Controller // 어떻게 메모리가 생성이 되는 걸까
+// src > main > webapp > WEB-INF > spring > appServlet > servlet-context.html 
+// <context:component-scan base-package="com.sp.bdi" /> ==> 여기 있는건 다 읽어들여라!
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 * 하나의 method에서 urlpattern & method 정의
@@ -47,11 +48,16 @@ public class HomeController {
 		return "home";
 	}
 	
+	
 	@RequestMapping(value = "/test") // GET, POST 상관없이 이 글자만 맞으면 다 탐
 	public String test(Model m) {
 		// WEB-INF/views/test/test.jsp
 		// 누군가 new를 해준다!
 		System.out.println(m); // {}
 		return "test/test";
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("this gets executed..");
 	}
 }

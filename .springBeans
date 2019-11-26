@@ -10,6 +10,9 @@
 		<config>src/main/resources/ioc/ioc-1.xml</config>
 		<config>src/main/resources/ioc/ioc-2.xml</config>
 		<config>src/main/resources/ioc/ioc-car.xml</config>
+		<config>src/main/resources/ioc/ioc-3.xml</config>
+		<config>src/main/resources/ioc/ioc-4.xml</config>
+		<config>src/main/resources/ioc/ioc-5.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
