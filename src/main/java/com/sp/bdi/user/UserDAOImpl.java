@@ -29,4 +29,17 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return null;
 	}
+	
+	@Override
+	public List<UserVO> selectUserVOList() {
+		SqlSession ss = ssf.openSession();
+		try {
+			return ss.selectList("com.sp.bdi.dao.UserInfoMapper.selectUserInfoList");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ss.close();
+		}
+		return null;
+	}
 }

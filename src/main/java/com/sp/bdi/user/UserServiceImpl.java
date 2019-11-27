@@ -17,5 +17,8 @@ public class UserServiceImpl implements UserService {
 	public List<Map<String, String>> getUserList() {
 		return udao.selectUserList();
 	}
-
+	@Override
+	public List<UserVO> getUserVOList() {
+		return udao.selectUserVOList();
+	}
 }
