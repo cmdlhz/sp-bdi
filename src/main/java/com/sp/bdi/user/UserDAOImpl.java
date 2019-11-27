@@ -21,7 +21,7 @@ public class UserDAOImpl implements UserDAO {
 	public List<Map<String, String>> selectUserList() {
 		SqlSession ss = ssf.openSession();
 		try {
-			return ss.selectList("com.spi.bdi.dao.UserInfoMapper.selectUserInfoList");
+			return ss.selectList("com.sp.bdi.dao.UserInfoMapper.selectUserInfoList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
