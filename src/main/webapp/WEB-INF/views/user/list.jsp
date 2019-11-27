@@ -8,11 +8,11 @@
 <title>LIST</title>
 </head>
 <body>
-	<p>I'm the user list.</p>
+	<p>I'm the user list :)</p>
 
-<c:forEach var="value" items="${userList}" varStatus="status">
-    <p>${status.count} : ${value} </p>
-</c:forEach>
+<%-- <c:forEach var="value" items="${userList}" varStatus="status"> --%>
+<%--     <p>${status.count} : ${value} </p> --%>
+<%-- </c:forEach> --%>
 
 <ul>
 	<c:forEach var="value" items="${userList}">
@@ -20,10 +20,10 @@
 	</c:forEach>
 </ul>
 <br><br>
-page : ${pageScope.userList}<br>
-req : ${requestScope.userList}<br> <!-- 여기만 나옴 -->
-session : ${sessionScope.userList}<br>
-app : ${applicationScope.userList}<br>
+<%-- page : ${pageScope.userList}<br> --%>
+<%-- req : ${requestScope.userList}<br> <!-- 여기만 나옴 --> --%>
+<%-- session : ${sessionScope.userList}<br> --%>
+<%-- app : ${applicationScope.userList}<br> --%>
 
 </body>
 </html>
