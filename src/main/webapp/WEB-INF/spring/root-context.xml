@@ -11,4 +11,9 @@
 		<property name="password" value="12345678" />
 		<!-- setDriverClassName, setUrl, setUsername, setPassword 호출 -->
 	</bean>
+	
+	<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean"> <!-- memory 생성 -->
+		<property name="dataSource" ref="bds" />
+		<property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"></property>
+	</bean>
 </beans>
