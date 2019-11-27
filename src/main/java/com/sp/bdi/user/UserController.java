@@ -19,12 +19,21 @@ public class UserController {
 	public String getUserList(Model m) {	//  
 		// 저장은 model에 하는데 jsp가 활용하는 건 request scope
 		m.addAttribute("userList", us.getUserList());
+		System.out.println(m);
 		return "user/list";
 	}
+
 	
-	@RequestMapping("/user/list/ajax")
+	@RequestMapping("/user/ajax/list")
 	public @ResponseBody List<UserVO> getUserVOList(){ 
-		// Jackson libraries ==> 3가지 종류
 		return us.getUserVOList();
 	}
 }
+
+
+
+
+
+
+
+
