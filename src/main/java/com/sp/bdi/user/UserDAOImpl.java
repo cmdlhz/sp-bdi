@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserDAOImpl implements UserDAO {
 
 	@Autowired
-	private SqlSessionFactory ssf;
+	private SqlSessionFactory ssf; // root-context.xml
 	
 	@Override
 	public List<Map<String, String>> selectUserList() {
