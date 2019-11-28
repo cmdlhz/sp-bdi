@@ -6,7 +6,7 @@
 
 <mapper namespace="com.sp.bdi.dao.UserInfoMapper">
  	<select id="selectUserInfoList" resultType="user">
- 		select * from user_info order by ui_num asc
+ 		select * from user_info
  		<where>
 	 		<if test="search != null">
 	 		 	<foreach collection="search" item="col" separator="or">
