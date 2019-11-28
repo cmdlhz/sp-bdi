@@ -36,13 +36,13 @@
 <!-- 	  </c:forEach> -->
 	  <tbody id="tBody"></tbody>
 	</table>
-	<button type="button" class="btn btn-outline-primary" onclick="goPage('/user/ajax/insert')">글쓰기</button>
-	<button type="button" class="btn btn-outline-success" onclick="goPage('/user/ajax/update')">Update</button>
+	<button type="button" class="btn btn-outline-primary" onclick="goPage('/user/insert')">Sign Up</button>
+	<button type="button" class="btn btn-outline-success" onclick="goPage('/user/update')">Update</button>
 </div>
 <script>
 function getUserList(param){
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET','/user/ajax/list?' + param);
+	xhr.open('GET','/user/list?' + param);
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 && xhr.status == 200){
 // 			console.log(xhr.responseText);
