@@ -15,14 +15,18 @@ public class UserController {
 	@Qualifier("userService")
 	private UserService us;
 	
+//	@RequestMapping("/user/list")
+//	public String getUserList(Model m) {	//  
+//		// 저장은 model에 하는데 jsp가 활용하는 건 request scope
+//		m.addAttribute("userList", us.getUserList());
+//		System.out.println(m);
+//		return "user/list";
+//	}
+
 	@RequestMapping("/user/list")
-	public String getUserList(Model m) {	//  
-		// 저장은 model에 하는데 jsp가 활용하는 건 request scope
-		m.addAttribute("userList", us.getUserList());
-		System.out.println(m);
+	public String getUserList() {
 		return "user/list";
 	}
-
 	
 	@RequestMapping("/user/ajax/list")
 	public @ResponseBody List<UserVO> getUserVOList(){ 
