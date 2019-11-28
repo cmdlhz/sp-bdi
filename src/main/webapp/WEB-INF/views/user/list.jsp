@@ -27,6 +27,8 @@
 	      <th scope="col">moddat</th>
 	      <th scope="col">modtim</th>
 	      <th scope="col">active</th>
+	      <th scope="col">수정</th>
+	      <th scope="col">삭제</th>
 	    </tr>
 	  </thead>
 <!-- 	  <c:forEach items=${userList} var="user"> -->
@@ -37,7 +39,6 @@
 	  <tbody id="tBody"></tbody>
 	</table>
 	<button type="button" class="btn btn-outline-primary" onclick="goPage('/user/insert')">Sign Up</button>
-	<button type="button" class="btn btn-outline-success" onclick="goPage('/user/update')">Update</button>
 </div>
 <script>
 function getUserList(param){
@@ -59,6 +60,8 @@ function getUserList(param){
 				html += '<td>' + user.moddat + '</td>';
 				html += '<td>' + user.modtim + '</td>';
 				html += '<td>' + user.active + '</td>';
+				html += '<td><a href="/views/user/view?uiNum=' + user.uiNum +'"><button class="btn btn-outline-warning">' + user.uiNum + '</button></a></td>';
+				html += '<td><button class="btn btn-outline-danger">' + user.uiNum + '</button></td>';
 				html += '</tr>';
 			}
 			tBody.innerHTML = html;

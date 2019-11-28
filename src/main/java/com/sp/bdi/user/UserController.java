@@ -41,6 +41,13 @@ public class UserController {
 		log.debug("param : {}", param);
 		return us.getUserVOList(param);
 	}
+	
+	@RequestMapping(value="/user/view", method=RequestMethod.GET)
+	public @ResponseBody List<UserVO> getUserInfo(@ModelAttribute UserVO param){
+		// @RequestBody : json 형태로 못받는다.
+		log.debug("param : {}", param);
+		return us.getUserInfo(param);
+	}
 
 	@RequestMapping(value="/user/list", method=RequestMethod.POST)
 	// @RequestBody : json 형태로 받을 수 있다.

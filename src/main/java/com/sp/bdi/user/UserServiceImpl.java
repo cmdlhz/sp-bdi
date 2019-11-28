@@ -22,6 +22,11 @@ public class UserServiceImpl implements UserService {
 		return udao.selectUserVOList(user);
 	}
 	@Override
+	public List<UserVO> getUserInfo(UserVO user) {
+		return udao.selectUserInfo(user);
+	}
+	
+	@Override
 	public Map<String, String> insertUserInfo(UserVO user) {
 		Map<String, String> rMap = new HashMap<String, String>();
 		rMap.put("cnt", udao.insertUserInfo(user) + "");
