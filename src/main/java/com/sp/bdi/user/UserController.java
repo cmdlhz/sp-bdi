@@ -23,10 +23,11 @@ public class UserController {
 //		return "user/list";
 //	}
 
-	@RequestMapping("/user/list")
-	public String getUserList() {
-		return "user/list";
-	}
+	// JSTL 기반이라면 이게 맞는거고, ajax 기반이면 URIController 만들어서 이동시켜도 됨
+//	@RequestMapping("/user/list")
+//	public String getUserList() {
+//		return "user/list";
+//	}
 	
 	@RequestMapping("/user/ajax/list")
 	public @ResponseBody List<UserVO> getUserVOList(){ 
