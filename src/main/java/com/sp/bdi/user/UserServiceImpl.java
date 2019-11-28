@@ -21,10 +21,10 @@ public class UserServiceImpl implements UserService {
 	public List<UserVO> getUserVOList(UserVO user) {
 		return udao.selectUserVOList(user);
 	}
-//	@Override
-//	public List<UserVO> getUserInfo(UserVO user) {
-//		return udao.selectUserInfo(user);
-//	}
+	@Override
+	public UserVO getUserVO(UserVO user) {
+		return udao.selectUserInfo(user);
+	}
 	
 	@Override
 	public Map<String, String> insertUserInfo(UserVO user) {

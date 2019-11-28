@@ -17,9 +17,13 @@
  		</where>
  	</select>
  	
- 	 <select id="selectUserInfo" resultType="user">
+ 	 <select id="selectUserInfo" parameterType="user" resultType="user">
  		select ui_num, ui_name, ui_id, ui_pwd from user_info
- 		where ui_num = #{uiNum}
+		<where>
+			<if test="uiNum != null">
+				and ui_num = #{uiNum}
+			</if>
+		</where>
  	</select>
  	
  	<insert id="insertUserInfo" parameterType="user">

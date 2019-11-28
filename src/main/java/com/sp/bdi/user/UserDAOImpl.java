@@ -45,18 +45,18 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 
-//	@Override
-//	public List<UserVO> selectUserInfo(UserVO user) {
-//		SqlSession ss = ssf.openSession();
-//		try {
-//			return ss.selectList("com.sp.bdi.dao.UserInfoMapper.selectUserInfo", user);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			ss.close();
-//		}
-//		return null;
-//	}
+	@Override
+	public UserVO selectUserInfo(UserVO user) {
+		SqlSession ss = ssf.openSession();
+		try {
+			return ss.selectOne("com.sp.bdi.dao.UserInfoMapper.selectUserInfo", user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ss.close();
+		}
+		return null;
+	}
 
 	@Override
 	public int insertUserInfo(UserVO user) {

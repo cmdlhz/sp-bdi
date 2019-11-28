@@ -26,19 +26,21 @@ ${param.uiNum}
 		</tr>
 		<tr>
 			<th colspan="2">
-				<button class="btn btn-outline-warning" onclick="goPage('/user/list?uiNum=${param.uiNum}')">수정</button>
+				<button class="btn btn-outline-warning" onclick="update(this)')">수정</button>
 				<button class="btn btn-outline-info" onclick="goPage('/user/list')">목록</button>
 			</th>
 		</tr>
 	</table>
 </div>
 <script>
+var user;
 window.onload = function(){
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET','/user/view?uiNum=${param.uiNum}');
+	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState==4 && xhr.status==200){
-			var user = JSON.parse(xhr.responseText);
+			user = JSON.parse(xhr.responseText);
 			console.log(user);
 			var tds = document.querySelectorAll('[data-col]');
 			for(var td of tds){
