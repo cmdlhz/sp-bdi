@@ -16,4 +16,26 @@
 	 		</if>
  		</where>
  	</select>
+ 	
+ 	<insert id="insertUserInfo" parameterType="user">
+ 		insert into user_info(ui_num, ui_id, ui_pwd, ui_name, credat, cretim, moddat, modtim) 
+ 		values(seq_ui_num.nextval, #{uiId},#{uiPwd}, #{uiName}, to_char(sysdate, 'YYYYMMDD'), to_char(sysdate, 'HH24MISS'), 
+ 		to_char(sysdate, 'YYYYMMDD'), to_char(sysdate, 'HH24MISS'))
+ 	</insert>
+ 	
+ 	<update id= "updateUserInfo" parameterType="user">
+ 		update user_info
+ 		<set>
+ 			<if test="uiId != null">
+ 				, ui_id = #{uiId}
+ 			</if>
+ 			<if test="uiPwd != null">
+ 				, ui_pwd = #{uiPwd}
+ 			</if>
+ 			<if test="uiName != null">
+ 				, ui_name = #{uiName}
+ 			</if>
+ 		 	where ui_num = #{uiNum}
+ 		</set>
+ 	</update>
 </mapper>

@@ -6,4 +6,7 @@ import java.util.Map;
 public interface UserService {
 	public List<Map<String, String>> getUserList();
 	public List<UserVO> getUserVOList(UserVO user);
+	public Map<String, String> insertUserInfo(UserVO user);
+	public Map<String, String> updateUserInfo(UserVO user);
+	public Map<String, String> deleteUserInfo(UserVO user);
 }

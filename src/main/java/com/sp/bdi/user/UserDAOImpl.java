@@ -42,4 +42,43 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return null;
 	}
+
+	@Override
+	public int insertUserInfo(UserVO user) {
+		SqlSession ss = ssf.openSession();
+		try {
+			return ss.insert("com.sp.bdi.dao.UserInfoMapper.insertUserInfo", user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ss.close();
+		}
+		return 0;
+	}
+	
+	@Override
+	public int updateUserInfo(UserVO user) {
+		SqlSession ss = ssf.openSession();
+		try {
+			return ss.update("com.sp.bdi.dao.UserInfoMapper.updateUserInfo", user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ss.close();
+		}
+		return 0;
+	}
+	
+	@Override
+	public int deleteUserInfo(UserVO user) {
+		SqlSession ss = ssf.openSession();
+		try {
+			return ss.delete("com.sp.bdi.dao.UserInfoMapper.deleteUserInfo", user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ss.close();
+		}
+		return 0;
+	}
 }

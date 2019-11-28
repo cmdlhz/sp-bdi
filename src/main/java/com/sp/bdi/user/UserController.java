@@ -1,12 +1,15 @@
 package com.sp.bdi.user;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,10 +35,30 @@ public class UserController {
 //		return "user/list";
 //	}
 	
-	@RequestMapping("/user/ajax/list")
+	@RequestMapping(value="/user/ajax/list", method=RequestMethod.GET)
 	public @ResponseBody List<UserVO> getUserVOList(@ModelAttribute UserVO param){
+		// @RequestBody : json 형태로 못받는다.
 		log.debug("param : {}", param);
 		return us.getUserVOList(param);
+	}
+
+	@RequestMapping(value="/user/ajax/list", method=RequestMethod.POST)
+	// @RequestBody : json 형태로 받을 수 있다.
+	public @ResponseBody Map<String, String> insertUser(@RequestBody UserVO user){
+		log.debug("user : {}", user);
+		return us.insertUserInfo(user);
+	}
+	
+	@RequestMapping(value="/user/ajax/list", method=RequestMethod.PUT)
+	public @ResponseBody Map<String, String> updateUser(@RequestBody UserVO user){
+		log.debug("user : {}", user);
+		return us.updateUserInfo(user);
+	}
+	
+	@RequestMapping(value="/user/ajax/list", method=RequestMethod.DELETE)
+	public @ResponseBody Map<String, String> deleteUser(@RequestBody UserVO user){
+		log.debug("user : {}", user);
+		return us.deleteUserInfo(user);
 	}
 }
 
