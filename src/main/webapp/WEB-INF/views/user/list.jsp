@@ -9,11 +9,17 @@
 </head>
 <body>
 <div class="container">
-	<h1>Ajax list</h1>
+	<h1>User list</h1>
+	<div class="search">
+		<label for="uiNum">번호</label> <input type="checkbox" id="uiNum" value="ui_num" name="search" />
+		<label for="uiName">이름</label> <input type="checkbox" id="uiName" value="ui_name" name="search" />
+		<label for="uiId">ID</label> <input type="checkbox" id="uiId" value="ui_id" name="search" />
+		<input type="text" id="searchStr"><button class="btn btn-dark">검색</button>
+	</div><br>
 	<table class="table">
 	  <thead class="thead-dark">
 	    <tr>
-	      <th scope="col">#</th>
+	      <th scope="col">번호</th>
 	      <th scope="col">이름</th>
 	      <th scope="col">ID</th>
 	      <th scope="col">credat</th>
@@ -34,12 +40,12 @@
 	<button type="button" class="btn btn-outline-success" onclick="goPage('/user/ajax/update')">Update</button>
 </div>
 <script>
-window.onload = function(){
+function getUserList(param){
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET','/user/ajax/list');
+	xhr.open('GET','/user/ajax/list?' + param);
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 && xhr.status == 200){
-			console.log(xhr.responseText);
+// 			console.log(xhr.responseText);
 			var list = JSON.parse(xhr.responseText);
 			var tBody = document.getElementById('tBody');
 			var html = '';
@@ -59,6 +65,31 @@ window.onload = function(){
 		}
 	}
 	xhr.send();
+}
+window.onload = function(){
+	getUserList('');
+	
+	var btn = document.querySelector("button"); // 제일 처음에 있는 버튼
+	btn.onclick = function(){
+		var checks = document.querySelectorAll("[name=search]:checked");
+		console.log(checks.length); // 체크된 갯수대로 숫자 찍힘
+		if(checks.length == 0){
+			alert("Please select at least one checkbox!");
+			return;
+		}
+		var searchStr = document.querySelector("#searchStr");
+		if(searchStr.value.trim().length < 1){
+			alert("Please enter a search keyword!");
+			return;
+		}
+		var search = '';
+		for(var i=0; i<checks.length; i++){
+			search += 'search=' + checks[i].value + '&';
+		}
+		search += 'searchStr=' + searchStr.value;
+		console.log("search : " + search);
+		getUserList(search);
+	}
 }
 </script>
 </body>

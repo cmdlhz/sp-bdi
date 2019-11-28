@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 		return udao.selectUserList();
 	}
 	@Override
-	public List<UserVO> getUserVOList() {
-		return udao.selectUserVOList();
+	public List<UserVO> getUserVOList(UserVO user) {
+		return udao.selectUserVOList(user);
 	}
 }

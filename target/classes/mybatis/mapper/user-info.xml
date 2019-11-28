@@ -6,6 +6,14 @@
 
 <mapper namespace="com.sp.bdi.dao.UserInfoMapper">
  	<select id="selectUserInfoList" resultType="user">
- 		select * from user_info
+ 		select * from user_info 
+ 		<where>
+	 		<if test="search != null">
+	 		 	<foreach collection="search" item="col" separator="or">
+	 				${col} like '%' || #{searchStr} || '%'
+	 			</foreach>
+	 			<!-- $ query문의 형태 (원래는 자동으로 ''가 입혀지지만) / #은 ?로 binding됨 -->
+	 		</if>
+ 		</where>
  	</select>
 </mapper>
