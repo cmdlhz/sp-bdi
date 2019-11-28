@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
@@ -42,16 +43,16 @@ public class UserController {
 		return us.getUserVOList(param);
 	}
 	
-	@RequestMapping(value="/user/view", method=RequestMethod.GET)
-	public @ResponseBody List<UserVO> getUserInfo(@ModelAttribute UserVO param){
-		// @RequestBody : json 형태로 못받는다.
-		log.debug("param : {}", param);
-		return us.getUserInfo(param);
-	}
+//	@RequestMapping(value="/user/view", method=RequestMethod.GET)
+//	public @ResponseBody List<UserVO> getUserInfo(@ModelAttribute UserVO param){
+//		// @RequestBody : json 형태로 못받는다.
+//		log.debug("param : {}", param);
+//		return us.getUserInfo(param);
+//	}
 
 	@RequestMapping(value="/user/list", method=RequestMethod.POST)
 	// @RequestBody : json 형태로 받을 수 있다.
-	public @ResponseBody Map<String, String> insertUser(@RequestBody UserVO user){
+	public @ResponseBody Map<String, String> insertUser(@RequestBody UserVO user){ // @RequestBody : json일때만 작동
 		log.debug("user : {}", user);
 		return us.insertUserInfo(user);
 	}
@@ -63,7 +64,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/user/list", method=RequestMethod.DELETE)
-	public @ResponseBody Map<String, String> deleteUser(@RequestBody UserVO user){
+	public @ResponseBody Map<String, String> deleteUser(@ModelAttribute UserVO user){
 		log.debug("user : {}", user);
 		return us.deleteUserInfo(user);
 	}

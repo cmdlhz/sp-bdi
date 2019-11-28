@@ -26,7 +26,7 @@
 		</tr>
 		<tr>
 			<th colspan="2">
-				<button type="button" class="btn btn-outline-success" onclick="save()">저장</button>
+				<button type="button" class="btn btn-outline-success" onclick="insertUser()">저장</button>
 				<button type="button" class="btn btn-outline-primary" onclick="goPage('/user/list')">목록</button>
 			</th>
 		</tr>
@@ -35,7 +35,7 @@
 </div>
 </body>
 <script type="text/javascript">
-function save(){
+function insertUser(){
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', '/user/list');
 	xhr.setRequestHeader('Content-Type', 'application/json');

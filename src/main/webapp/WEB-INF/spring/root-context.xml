@@ -9,6 +9,7 @@
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521/xe" />
 		<property name="username" value="bdi" />
 		<property name="password" value="12345678" />
+		<property name="defaultAutoCommit" value="false" />
 		<!-- setDriverClassName, setUrl, setUsername, setPassword 호출 -->
 	</bean>
 	

@@ -1,5 +1,6 @@
 package com.sp.bdi.user;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -44,24 +45,26 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 
-	@Override
-	public List<UserVO> selectUserInfo(UserVO user) {
-		SqlSession ss = ssf.openSession();
-		try {
-			return ss.selectList("com.sp.bdi.dao.UserInfoMapper.selectUserInfo", user);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			ss.close();
-		}
-		return null;
-	}
+//	@Override
+//	public List<UserVO> selectUserInfo(UserVO user) {
+//		SqlSession ss = ssf.openSession();
+//		try {
+//			return ss.selectList("com.sp.bdi.dao.UserInfoMapper.selectUserInfo", user);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			ss.close();
+//		}
+//		return null;
+//	}
 
 	@Override
 	public int insertUserInfo(UserVO user) {
 		SqlSession ss = ssf.openSession();
 		try {
-			return ss.insert("com.sp.bdi.dao.UserInfoMapper.insertUserInfo", user);
+			int cnt = ss.insert("com.sp.bdi.dao.UserInfoMapper.insertUserInfo", user);
+			ss.commit();
+			return cnt;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -74,7 +77,9 @@ public class UserDAOImpl implements UserDAO {
 	public int updateUserInfo(UserVO user) {
 		SqlSession ss = ssf.openSession();
 		try {
-			return ss.update("com.sp.bdi.dao.UserInfoMapper.updateUserInfo", user);
+			int cnt = ss.update("com.sp.bdi.dao.UserInfoMapper.updateUserInfo", user);
+			ss.commit();
+			return cnt;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -86,8 +91,21 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int deleteUserInfo(UserVO user) {
 		SqlSession ss = ssf.openSession();
-		try {
-			return ss.delete("com.sp.bdi.dao.UserInfoMapper.deleteUserInfo", user);
+//		// 아니면 여기서 for문 돌려도 됨
+//		int[] uiNums = user.getUiNums();
+//		int cnt = 0;
+//		for(int uiNum: uiNums) {
+//			cnt += ...
+//		}
+		
+		try{
+			int cnt = ss.delete("com.sp.bdi.dao.UserInfoMapper.deleteUserInfo", user);
+			ss.commit();
+			if(cnt != user.getUiNums().length) {
+				ss.rollback();
+				return 0;
+			}
+			return cnt;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

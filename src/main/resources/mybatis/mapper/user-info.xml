@@ -6,7 +6,7 @@
 
 <mapper namespace="com.sp.bdi.dao.UserInfoMapper">
  	<select id="selectUserInfoList" resultType="user">
- 		select * from user_info order by ui_num desc
+ 		select * from user_info order by ui_num asc
  		<where>
 	 		<if test="search != null">
 	 		 	<foreach collection="search" item="col" separator="or">
@@ -42,4 +42,15 @@
  		 	where ui_num = #{uiNum}
  		</set>
  	</update>
+ 	
+ 	<delete id="deleteUserInfo" parameterType="user">
+ 	 	delete from user_info
+ 		<where>
+	 		<if test="uiNums != null">
+	 		 	<foreach collection="uiNums" item="uiNum" separator="or">
+	 				ui_num = #{uiNum}
+	 			</foreach>
+	 		</if>
+ 		</where>
+ 	</delete>
 </mapper>
