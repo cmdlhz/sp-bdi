@@ -48,7 +48,7 @@ public class SessionFilter implements Filter {
 				return;
 			}
 //			log.debug("uri => {}", uri);
-			throw new ServletException("Login needed"); // AOP의 근간
+//			throw new ServletException("Login needed"); // AOP의 근간
 		}
 		chain.doFilter(request, response);
 	}
