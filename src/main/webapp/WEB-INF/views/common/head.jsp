@@ -8,7 +8,7 @@
 <script src="${jsPath}/bootstrap.bundle.js?ver=${ver}"></script>
 <script src="${jsPath}/common.js?ver=${ver}"></script>
 
-<script type="text/javascript" src="${codePath}/suite.js?ver=${ver}"></script>
+<script src="${codePath}/suite.js?ver=${ver}"></script>
 <link rel="stylesheet" href="${codePath}/suite.css?ver=${ver}">
 <link rel="stylesheet" href="${codePath}/index.css?ver=${ver}">
 
