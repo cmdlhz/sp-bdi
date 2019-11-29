@@ -39,7 +39,7 @@ public class SessionFilter implements Filter {
 			log.debug("user : {}", user);
 		}
 		
-		if(uri.indexOf("login") == -1) {
+		if(user== null && uri.indexOf("login") == -1) {
 			if(uri.indexOf("/views") == 0) { // 단순한 jsp 화면 요청 / login이 아닐 경우
 				hsr.setAttribute("msg", "Please login.");
 				hsr.setAttribute("url", "/views/user/login");
@@ -48,6 +48,7 @@ public class SessionFilter implements Filter {
 				return;
 			}
 			log.debug("uri => {}", uri);
+//			throw new ServletException("Login needed"); 
 		}
 		chain.doFilter(request, response);
 	}
