@@ -108,11 +108,11 @@ function getUserList(param){
 				html += '</tr>';
 			}
 			tBody.innerHTML = html;
-		} //else{
-// 			console.log(xhr.responseText);
-// 			alert("You need to login !!!!");
-// 			location.href = "/views/user/login";
-		//}
+		} else{
+			console.log(xhr.responseText);
+			alert("You need to login !!!!");
+			location.href = "/views/user/login";
+		}
 	}
 	xhr.send();
 }

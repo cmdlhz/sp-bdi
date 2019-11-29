@@ -47,8 +47,8 @@ public class SessionFilter implements Filter {
 				rd.forward(request, response);
 				return;
 			}
-			log.debug("uri => {}", uri);
-//			throw new ServletException("Login needed"); 
+//			log.debug("uri => {}", uri);
+			throw new ServletException("Login needed"); // AOP의 근간
 		}
 		chain.doFilter(request, response);
 	}
