@@ -6,7 +6,7 @@
 
 <mapper namespace="com.sp.bdi.dao.UserInfoMapper">
  	<select id="selectUserInfoList" resultType="user">
- 		select * from user_info order by ui_num asc
+ 		select * from user_info
  		<where>
 	 		<if test="search != null">
 	 		 	<foreach collection="search" item="col" separator="or">
@@ -15,6 +15,7 @@
 	 			<!-- $ query문의 형태 (원래는 자동으로 ''가 입혀지지만) / #은 ?로 binding됨 -->
 	 		</if>
  		</where>
+ 		 order by ui_num desc
  	</select>
  	
  	 <select id="selectUserInfo" parameterType="user" resultType="user">
