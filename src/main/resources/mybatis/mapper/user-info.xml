@@ -57,4 +57,18 @@
 	 		</if>
  		</where>
  	</delete>
+ 	<select id="selectLoginInfo" resultType="user">
+ 		select * from user_info
+ 		<where>
+ 			 <if test="uiNum != null">
+	 		 	and ui_num = #{uiNum}
+	 		</if>
+	 		<if test="uiId != null">
+	 		 	and ui_id = #{uiId}
+	 		</if>
+	 		<if test="uiPwd != null">
+	 		 	and ui_pwd = #{uiPwd}
+	 		</if>
+ 		</where>
+ 	</select>
 </mapper>

@@ -39,6 +39,7 @@
 	  <tbody id="tBody"></tbody>
 	</table>
 	<button type="button" class="btn btn-outline-primary" onclick="goPage('/user/insert')">Sign Up</button>
+	<button type="button" class="btn btn-outline-success" onclick="goPage('/user/login')">Log In</button>
 	<button class="btn btn-outline-danger" onclick="deleteUsers()">삭제</button>
 </div>
 <script>

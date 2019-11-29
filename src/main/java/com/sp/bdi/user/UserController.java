@@ -3,6 +3,8 @@ package com.sp.bdi.user;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +49,16 @@ public class UserController {
 		// @RequestBody : json 형태로 못받는다.
 		log.debug("user : {}", user);
 		return us.getUserVO(user);
+	}
+	
+	@RequestMapping(value="/user/login", method=RequestMethod.POST)
+	// HttpServletRequest req 한다음 HttpSession hs = req.getSession() 이라고 해도 되지만... HttpSession hs 만으로도 호출해줌
+	public @ResponseBody UserVO login(@RequestBody UserVO user, HttpSession hs){
+		log.debug("user : {}", user);
+		user = us.login(user);
+		log.debug("select user : {}", user);
+		if(user != null) hs.setAttribute("user", user);
+		return user;
 	}
 
 	@RequestMapping(value="/user/list", method=RequestMethod.POST)
