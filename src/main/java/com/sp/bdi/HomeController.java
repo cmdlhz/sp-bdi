@@ -45,7 +45,7 @@ public class HomeController {
 		strList.add("test5");
 		model.addAttribute("strList", strList); // key-value
 		
-		return "home";
+		return "home";	// servlet-content.xml에서 ".jsp" 붙은걸로 탐
 	}
 	
 	
