@@ -61,10 +61,21 @@ public class AjaxController {
 	}
 	
 	@RequestMapping(value="/ajax/json", method=RequestMethod.POST)
-	public @ResponseBody Map<String, String> postJson(@RequestBody Map<String, String> map){
+//	public @ResponseBody Map<String, String> postJson(@RequestBody Map<String, String> map){
+	public @ResponseBody List<String> postJson(@RequestBody Map<String, String> map){
 		log.debug("param=>{}", map);
-		Map<String, String> rMap = new HashMap<String, String>();
-		rMap.put("greeting", "hello. jen");
-		return rMap;
+		String searchName = map.get("searchName");
+		if(list.indexOf(searchName) == -1) {
+			list.add(searchName);
+		}
+		return list;
 	}
 }
+
+
+
+
+
+
+
+

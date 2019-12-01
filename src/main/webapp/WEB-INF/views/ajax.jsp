@@ -95,15 +95,24 @@ window.onload = function(){
 		} else if(btn.innerText == 'POST JSON'){
 			btn.onclick = function(){
 				var param = {
-					a : 1,
-					b : 2
+					searchName : document.querySelector('#searchName').value
 				}
 				ajax({
 					method: 'POST',
 					url: '/ajax/json',
-					callback: function(res){
-						res = JSON.parse(res);
-						alert(res.greeting);
+// 					callback: function(res){
+// 						res = JSON.parse(res);
+// 						alert(res.greeting);
+// 					},
+					callback : function(res){
+						res = JSON.parse(res); // JSON 형태의 string
+						console.log("res : " + res);
+						var html = '<ul>';
+						for(var i=0; i<res.length;i++){
+							html += '<li>' + res[i] + '</li>';
+						}
+						html += '</ul>';
+						document.querySelector('#rDiv').innerHTML = html;
 					},
 					data: JSON.stringify(param)
 				})
