@@ -40,15 +40,18 @@ public class AjaxController {
 		log.debug("param=>{}", map);
 		String searchName = map.get("searchName");
 		
+//		if(searchName == null || search...) ...
+		
 //		Map<String, String> rMap = new HashMap<String, String>();
+//		rMap.put("greeting", "hello. jen");
+//		return rMap;
+		
 		List<String> list = new ArrayList<String>();
 		for(String str: this.list) {
 			if(str.indexOf(searchName) != -1) {
 				list.add(str);
 			}
 		}
-//		rMap.put("greeting", "hello. jen");
-//		return rMap;
 		return list;
 	}
 	
@@ -69,6 +72,17 @@ public class AjaxController {
 			list.add(searchName);
 		}
 		return list;
+	}
+	
+	@RequestMapping(value="/ajax", method=RequestMethod.DELETE)
+//	public @ResponseBody Map<String, String> deleteAjax(@RequestBody Map<String, String> map){
+	public @ResponseBody List<String> deleteAjax(@RequestBody Map<String, String> map){	
+		log.debug("param=>{}", map);
+		String searchName = map.get("searchName");
+		if(list.indexOf(searchName) != -1) {
+			list.remove(searchName);
+		}
+		return list;		
 	}
 }
 

@@ -10,9 +10,10 @@
 	<div class="search">
 		<input type="text" id="searchName">
 		<button>GET</button>
-		<button>SEARCH</button>
+<!-- 		<button>SEARCH</button> -->
+		<button>POST JSON</button><br>
+		<button>DELETE JSON</button><br>
 	</div>
-	<button>POST JSON</button><br>
 	<button>POST Param</button>
 	<div id="rDiv">
 	
@@ -21,7 +22,7 @@
 var ajax = function(conf){
 	var xhr = new XMLHttpRequest();
 	xhr.open(conf.method, conf.url);
-	if(conf.method == 'POST'){
+	if(conf.method != 'GET'){
 // 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.setRequestHeader('Content-Type', 'application/json');
 	}
@@ -117,7 +118,28 @@ window.onload = function(){
 					data: JSON.stringify(param)
 				})
 			}	
-		} else {
+		} else if(btn.innerText == 'DELETE JSON'){
+			btn.onclick = function(){
+				var param = {
+					searchName : document.querySelector('#searchName').value
+				}
+				ajax({
+					method: 'DELETE',
+					url: '/ajax',
+					callback : function(res){
+						res = JSON.parse(res); // JSON 형태의 string
+						console.log("res : " + res);
+						var html = '<ul>';
+						for(var i=0; i<res.length;i++){
+							html += '<li>' + res[i] + '</li>';
+						}
+						html += '</ul>';
+						document.querySelector('#rDiv').innerHTML = html;
+					},
+					data: JSON.stringify(param)
+				});
+			}			
+		} else {	
 			btn.onclick = function(){
 				var fd = new FormData();
 				fd.append('a', 1);
