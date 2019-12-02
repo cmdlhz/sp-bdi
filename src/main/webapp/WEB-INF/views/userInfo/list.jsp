@@ -16,18 +16,28 @@ div#userGrid{
 <body>
 	<h1>HELLO</h1>
 	<div id="userGrid"></div>
+	<button onclick="pickData()">DATA</button>
 <script>
-var list = [];
+function pickData(){
+	var row = grid.data.getItem(61);
+	console.log(row);
+}
 
+var list = [];
+var grid;
 function getUserList(param){
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET','/user/list?' + param);
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.onreadystatechange = function(){
+		console.log(xhr.responseText);
 		if(xhr.readyState == 4 && xhr.status == 200){
 			list = JSON.parse(xhr.responseText);
+			list.forEach(ui => {
+				ui.id = ui.uiNum;	// row의 id
+			});
 			console.log(list);
-			var grid = new dhx.Grid('userGrid', {
+			grid = new dhx.Grid('userGrid', {
 				columns: [
 					{width: 100, id: 'uiNum', header:[{text:'번호'}], editing:false},
 					{width: 100, id: 'uiId', header:[{text:'ID'}]},
@@ -37,7 +47,11 @@ function getUserList(param){
 				headerRowHeight: 20,
 				data: list,
 				editing: true
-			})
+			});
+			grid.events.on('CellClick', function(row, column){
+				console.log(row);
+				console.log(column);
+			});
 		} else{
 // 			console.log(xhr.responseText);
 // 			alert("You need to login !!!!");

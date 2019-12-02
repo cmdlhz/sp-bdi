@@ -15,13 +15,14 @@ list.forEach(ui => {
 	ui.id = ui.uiNum;
 });
 
-var list2 = [];
+// var list2 = JSON.parse(jsonStr);
+var list2 = JSON.parse(JSON.stringify(list));
 for(var ui of list){
 	list2.push(ui);
 }
 
 list2[0].uiNum = 10;
-console.log(list);
+// console.log(list);
 console.log(list2);
 // 나를 바꾸는 건 안 되지만 내 안의 걸 바꾸는 건 된다.
 </script>
