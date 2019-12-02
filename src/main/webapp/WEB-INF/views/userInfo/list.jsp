@@ -17,22 +17,26 @@ div#userGrid{
 	<h1>HELLO</h1>
 	<div id="userGrid"></div>
 <script>
+var list = [];
+
 function getUserList(param){
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET','/user/list?' + param);
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 && xhr.status == 200){
-			var list = JSON.parse(xhr.responseText);
+			list = JSON.parse(xhr.responseText);
 			console.log(list);
 			var grid = new dhx.Grid('userGrid', {
 				columns: [
-					{width: 100, id: 'uiNum', header:[{text:'번호'}]},
+					{width: 100, id: 'uiNum', header:[{text:'번호'}], editing:false},
 					{width: 100, id: 'uiId', header:[{text:'ID'}]},
 					{width: 100, id: 'uiName', header:[{text:'Name'}]},
 					{width: 100, id: 'credat', header:[{text:'credat'}]}
 				],
-				headerRowHeight: 20
+				headerRowHeight: 20,
+				data: list,
+				editing: true
 			})
 		} else{
 // 			console.log(xhr.responseText);
