@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 1) generate memory -->
+	<!-- 이게 new Car() 인것 -->
+	<!-- bean에서의 scope는 건드릴 일이 없음 -->
+	<bean id="car1" class="com.sp.bdi.test.test2.Car" scope="prototype"> <!-- myBatis도 이렇게 동작 -->
+		<!-- 생성할 때 주입 : 생성자 주입 -->
+		<constructor-arg value="Sonata"></constructor-arg>
+	</bean>
+	
+	<!-- 2) setter setup -->
+	<bean id="carMaker" class="com.sp.bdi.test.test2.CarMaker">
+		<!-- 생성할 때 주입 : 생성자 주입 // 메모리 생성 -->
+		<constructor-arg value="Ford"></constructor-arg>
+		<!-- 앞이 "set" // "setCar"를 찾아주는 것 -->
+		<!-- 위에서 메모리를 만들어줬으니 호출 가능한 것! -->
+		<property name="car">
+			<ref bean="car1" /> <!-- 위의 car를 가리킴 -->
+		</property>
+	</bean>
+</beans>
